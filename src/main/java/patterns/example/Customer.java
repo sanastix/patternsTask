@@ -1,22 +1,32 @@
 package patterns.example;
 
 import java.util.List;
-
 import static patterns.example.Movie.MovieType.NEW_RELEASE;
 
 @SuppressWarnings("StringConcatenationInLoop")
 class Customer {
+
+    private int id = 0;
     private final String name;
+    private final long discountCard;
     private final List<Rental> rentals;
 
-    public Customer(String name, List<Rental> rentals) {
+    public Customer(String name, long discountCard, List<Rental> rentals) {
+        this.discountCard = discountCard;
+        id++;
         this.name = name;
         this.rentals = rentals;
     }
 
+    public int getId(){
+        return id;
+    }
 
     public String getName() {
         return name;
+    }
+    public long getDiscountCard(){
+        return discountCard;
     }
 
     public String statement() {
@@ -53,6 +63,5 @@ class Customer {
         result += "You earned " + frequentRenterPoints + " frequent renter points";
         return result;
     }
-
 
 }
